@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR,
     role VARCHAR,
     rank VARCHAR,
+    email VARCHAR,
     departmentId int
 
 );
