@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS news (
     id int PRIMARY KEY auto_increment,
     type VARCHAR,
-    headline VARCHAR,
+    headlines VARCHAR,
     content VARCHAR,
     departmentId int
 
