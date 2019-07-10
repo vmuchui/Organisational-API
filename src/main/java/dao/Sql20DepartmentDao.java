@@ -1,5 +1,6 @@
 package dao;
 
+import models.DB;
 import models.Department;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -8,7 +9,7 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql20DepartmentDao implements DepartmentDao {
-    Sql2o sql2o = new Sql2o("jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'", "", "");
+    Sql2o sql2o = DB.sql2o;
 
 
     @Override
