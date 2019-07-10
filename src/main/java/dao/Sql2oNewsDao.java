@@ -1,9 +1,6 @@
 package dao;
 
-import models.Department;
-import models.DepartmentNews;
-import models.GeneralNews;
-import models.News;
+import models.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -11,7 +8,7 @@ import java.util.List;
 
 public class Sql2oNewsDao implements NewsDao {
 
-    Sql2o sql2o = new Sql2o("jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'", "", "");
+    Sql2o sql2o = DB.sql2o;
 
 
     @Override
@@ -77,23 +74,19 @@ public class Sql2oNewsDao implements NewsDao {
 
     }
 
+    public void updateDepNews(DepartmentNews dep, int id) {
+        try (Connection con = sql2o.open()){
+            String sql = "UPDATE new SET (headlines, content)= (:headlines,:content) WHERE id= :id;";
+            con.createQuery(sql).addParameter("headlines",dep.getHeadlines()).addParameter("content", dep.getContent()).addParameter("id", id).executeUpdate();
+        }
+    }
+
     @Override
-    public void update(Object o, int id) {
-        if (o instanceof GeneralNews) {
-            GeneralNews gen = (GeneralNews) o;
+    public void update(GeneralNews gen, int id) {
             try (Connection con = sql2o.open()){
                 String sql = "UPDATE new SET (headlines, content)= (:headlines,:content) WHERE id= :id;";
                 con.createQuery(sql).addParameter("headlines",gen.getHeadlines()).addParameter("content", gen.getContent()).addParameter("id",id).executeUpdate();
             }
-
-        }
-        if (o instanceof DepartmentNews) {
-            DepartmentNews dep = (DepartmentNews) o;
-            try (Connection con = sql2o.open()){
-                String sql = "UPDATE new SET (headlines, content)= (:headlines,:content) WHERE id= :id;";
-                con.createQuery(sql).addParameter("headlines",dep.getHeadlines()).addParameter("content", dep.getContent()).addParameter("id", id).executeUpdate();
-            }
-        }
     }
 
     @Override
