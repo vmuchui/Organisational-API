@@ -10,7 +10,7 @@ public interface NewsDao  {
     Object find(int id);
     List<GeneralNews> getAll();
     List<DepartmentNews> getDeptNews(int id);
-    void update(Object o, int id);
+    void update(GeneralNews gen, int id);
     void delete(Object o);
     void clearAll();
 }
