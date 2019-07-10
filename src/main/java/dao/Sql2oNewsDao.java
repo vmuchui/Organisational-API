@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Sql2oNewsDao implements NewsDao {
 
-    Sql2o sql2o = DB.sql2o;
+    public Sql2o sql2o = DB.sql2o;
 
 
     @Override
