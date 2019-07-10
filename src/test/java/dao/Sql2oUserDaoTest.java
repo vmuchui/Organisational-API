@@ -68,9 +68,23 @@ public class Sql2oUserDaoTest {
 
     @Test
     public void delete() {
+        User user = setUpUser();
+        userDao.save(user);
+        User another = setUpUser();
+        userDao.save(another);
+        userDao.delete(user);
+        assertTrue(userDao.getAll().contains(another));
+        assertFalse(userDao.getAll().contains(user));
     }
 
     @Test
     public void clearAll() {
+        User user = setUpUser();
+        userDao.save(user);
+        User another = setUpUser();
+        userDao.save(another);
+        userDao.clearAll();
+        assertFalse(userDao.getAll().contains(user));
+        assertFalse(userDao.getAll().contains(another));
     }
 }
