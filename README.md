@@ -54,7 +54,7 @@ Navigate to the project directory through your terminal and type gradle run.
 
 Your code should look something like this replacing your_username with your actual username.
 
-```
+
 
 moringa@moringa-Lenovo-V110-15ISK:~/your_username/JAVA/wild$ gradle run
 
