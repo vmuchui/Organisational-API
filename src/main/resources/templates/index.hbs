@@ -1,0 +1,24 @@
+{{#partial "content"}}
+    <div class="jumbotron">
+        <h1 class="text-center">Organisational API</h1>
+        <hr>
+        <small class="text-center"> ~ALL info on your company in one space~ </small>
+    </div>
+
+    <div class="container">
+        {{#if general}}
+            {{#each general}}
+                <h2> {{headlines}} </h2>
+                <h4>{{content}}</h4>
+            {{/each}}
+
+            {{else}}
+            <h1> No general News Yet!! </h1>
+        {{/if}}
+    </div>
+
+
+
+{{/partial}}
+
+{{> layout.hbs}}

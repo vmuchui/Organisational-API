@@ -31,6 +31,7 @@ public class Sql2oNewsDao implements NewsDao {
                         .addParameter("headlines", dep.getHeadlines())
                         .addParameter("content",dep.getContent())
                         .addParameter("departmentId",dep.getDepartmentId()).executeUpdate().getKey();
+                dep.setId(id);
             }
         }
     }
